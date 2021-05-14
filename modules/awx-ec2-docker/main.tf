@@ -1,14 +1,12 @@
 resource "aws_instance" "main" {
-    ami           = var.ami
-    instance_type = var.instance_type
+    
+    ami                         = var.ami
+    instance_type               = var.instance_type
+    key_name                    = var.key_pair_name
 
     network_interface {
         network_interface_id = var.nic_id
         device_index         = 0
-    }
-
-    credit_specification {
-        cpu_credits = "unlimited"
     }
 
     provisioner "remote-exec" {
@@ -20,13 +18,17 @@ resource "aws_instance" "main" {
             "sudo usermod -aG docker $USER",
             "sudo systemctl restart docker",
             "sudo curl -L \"https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)\" -o /usr/local/bin/docker-compose",
-            "sudo chmod +x /usr/local/bin/docker-compose"
+            "sudo chmod +x /usr/local/bin/docker-compose",
+            "composeInfo=$(docker-compose --version) && composeVersion=$(echo $${composeInfo:23:6})",
+
         ]
         connection {
-            host     = var.host_ip
-            type     = "ssh"
-            user     = var.host_user
-            password = var.host_password
+            host        = self.public_ip
+            type        = "ssh"
+            user        = var.host_user
+            private_key = file(var.secret_key)
+            agent       = false
+            timeout     = "10m"
         }
     }
 }

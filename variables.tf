@@ -1,3 +1,31 @@
+variable "AWS_DEFAULT_REGION" {
+  default = "us-east-2"
+  description = "region"
+}
+variable "AWS_ACCESS_KEY_ID" {
+  description = "access key AWS"
+}
+variable "AWS_SECRET_ACCESS_KEY" {
+  description = "secret key AWS"
+}
+
+#### NIC VARIABLES ####
+variable "subnet_id" {
+    type        = string
+    description = "Id de subnet donde crear la NIC"
+}
+
+variable "private_ips" {
+    type        = list(string)
+    description = "Lista de ip privadas a asignar a la NIC"
+}
+
+variable "security_groups_id" {
+    type        = list(string)
+    description = "Lista de security groups"
+}
+
+#### INSTANCE VARIABLES ####
 variable "ami" {
     type        = string
     description = "AMI ID"
@@ -9,16 +37,6 @@ variable "instance_type" {
     description = "AWC EC2 Instance type"
     default     = "t2.medium"
 }
-
-variable "nic_id" {
-    type        = string
-    description = "Network interface's id to be attached"
-}
-
-# variable "host_ip" {
-#     type        = string
-#     description = "host Public IP Address"
-# }
 
 variable "host_user" {
     type        = string
