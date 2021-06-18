@@ -1,5 +1,5 @@
 
-Versión en español [[LINK](https://dev.azure.com/gabrielc0841/Metalsa-java/_wiki/wikis/README.md/2/README_ES)]
+Versión en español [[LINK](https://github.com/Gabmetal/gaboform/blob/azure/aks/README_ES.md)]
 
   
 
