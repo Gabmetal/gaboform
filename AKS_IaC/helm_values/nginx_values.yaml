@@ -1,6 +1,0 @@
-controller:
-  replicaCount: 2
-  service:
-    annotations: {
-      service.beta.kubernetes.io/azure-dns-label-name: ingress-extramet
-    }
