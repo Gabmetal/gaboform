@@ -17,6 +17,16 @@ variable "subnet_id" {
     description                                 = ""
 }
 
-#variable "ids_of_dns_zone" {
-#    description                                 = ""
-#}
+variable "tags" {
+  description = "TAGS para los recursos"
+  type        = map(string)
+  default = {
+    environment = "develop"
+    application = "test"
+  }
+}
+
+variable "resource_count" {
+    type        = number
+    description = "cantidad de recursos a desplegar"
+}

@@ -1,5 +1,5 @@
 
-Versión en español [[LINK](https://github.com/Gabmetal/gaboform/blob/azure/aks/README_ES.md)]
+Versión en español [[LINK](./README_ES)]
 
   
 
@@ -18,7 +18,7 @@ Before run terraform you will need to set this environment variables in your pip
 | ARM_SUBSCRIPTION_ID | Target Subscription id | null | String |
 | ARM_TENANT_ID | Subscription's tenant ID | null | String |
 | TF_VAR_ssh_key | If you already have a ssh key you can set here. If you don't provide one, terraform will create a new one and assign it to nodes | null | String |
-| TF_VAR_updating_existing_cluster | If you are updating configuration of an existing cluster set  it to true | false | Bool |
+| TF_VAR_UPDATING_EXISTING_CLUSTER | If you are updating configuration of an existing cluster set  it to true | false | Bool |
 | TF_VAR_location | Location where you want to deploy resources in azure | eastus2 | String |
 | TF_VAR_rg_name | Name for Resource Group where you want to deploy cluster resources | aks-test-rg | String |
 | TF_VAR_tags | Tags to apply to each resource | { environment="develop", application="test" } | Map(string)

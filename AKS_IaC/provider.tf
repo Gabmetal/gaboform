@@ -19,9 +19,9 @@ terraform {
     }
   }
   backend "azurerm" {
-    resource_group_name  = "rg-tfstate"     #"#{sarg}#"
-    storage_account_name = "satfstatemtl"   #"#{saname}#"
-    container_name       = "terraformstate" #"#{contname}#"
+    resource_group_name  = "#{sarg}#" #"rg-tfstate"
+    storage_account_name = "#{saname}#" #"satfstatemtl"
+    container_name       = "#{contname}#" #"terraformstate"
     key                  = "terraform.tfstate"
     use_azuread_auth     = true
   }
@@ -37,16 +37,16 @@ provider "azuread" {
 
 provider "helm" {
   kubernetes {
-    host                   = var.updating_existing_cluster ? "${data.azurerm_kubernetes_cluster.existing_cluster[0].kube_config.0.host}"                                 : module.aks_cluster.output.kube_config.0.host
-    client_certificate     = var.updating_existing_cluster ? "${base64decode(data.azurerm_kubernetes_cluster.existing_cluster[0].kube_config.0.client_certificate)}"     : base64decode(module.aks_cluster.output.kube_config.0.client_certificate)
-    client_key             = var.updating_existing_cluster ? "${base64decode(data.azurerm_kubernetes_cluster.existing_cluster[0].kube_config.0.client_key)}"             : base64decode(module.aks_cluster.output.kube_config.0.client_key)
-    cluster_ca_certificate = var.updating_existing_cluster ? "${base64decode(data.azurerm_kubernetes_cluster.existing_cluster[0].kube_config.0.cluster_ca_certificate)}" : base64decode(module.aks_cluster.output.kube_config.0.cluster_ca_certificate)
+    host                   = var.UPDATING_EXISTING_CLUSTER ? "${data.azurerm_kubernetes_cluster.existing_cluster[0].kube_config.0.host}"                                 : module.aks_cluster.output.kube_config.0.host
+    client_certificate     = var.UPDATING_EXISTING_CLUSTER ? "${base64decode(data.azurerm_kubernetes_cluster.existing_cluster[0].kube_config.0.client_certificate)}"     : base64decode(module.aks_cluster.output.kube_config.0.client_certificate)
+    client_key             = var.UPDATING_EXISTING_CLUSTER ? "${base64decode(data.azurerm_kubernetes_cluster.existing_cluster[0].kube_config.0.client_key)}"             : base64decode(module.aks_cluster.output.kube_config.0.client_key)
+    cluster_ca_certificate = var.UPDATING_EXISTING_CLUSTER ? "${base64decode(data.azurerm_kubernetes_cluster.existing_cluster[0].kube_config.0.cluster_ca_certificate)}" : base64decode(module.aks_cluster.output.kube_config.0.cluster_ca_certificate)
   }
 }
 
 provider "kubernetes" {
-  host                   = var.updating_existing_cluster ? "${data.azurerm_kubernetes_cluster.existing_cluster[0].kube_config.0.host}"                                 : module.aks_cluster.output.kube_config.0.host
-  client_certificate     = var.updating_existing_cluster ? "${base64decode(data.azurerm_kubernetes_cluster.existing_cluster[0].kube_config.0.client_certificate)}"     : base64decode(module.aks_cluster.output.kube_config.0.client_certificate)
-  client_key             = var.updating_existing_cluster ? "${base64decode(data.azurerm_kubernetes_cluster.existing_cluster[0].kube_config.0.client_key)}"             : base64decode(module.aks_cluster.output.kube_config.0.client_key)
-  cluster_ca_certificate = var.updating_existing_cluster ? "${base64decode(data.azurerm_kubernetes_cluster.existing_cluster[0].kube_config.0.cluster_ca_certificate)}" : base64decode(module.aks_cluster.output.kube_config.0.cluster_ca_certificate)
+  host                   = var.UPDATING_EXISTING_CLUSTER ? "${data.azurerm_kubernetes_cluster.existing_cluster[0].kube_config.0.host}"                                 : module.aks_cluster.output.kube_config.0.host
+  client_certificate     = var.UPDATING_EXISTING_CLUSTER ? "${base64decode(data.azurerm_kubernetes_cluster.existing_cluster[0].kube_config.0.client_certificate)}"     : base64decode(module.aks_cluster.output.kube_config.0.client_certificate)
+  client_key             = var.UPDATING_EXISTING_CLUSTER ? "${base64decode(data.azurerm_kubernetes_cluster.existing_cluster[0].kube_config.0.client_key)}"             : base64decode(module.aks_cluster.output.kube_config.0.client_key)
+  cluster_ca_certificate = var.UPDATING_EXISTING_CLUSTER ? "${base64decode(data.azurerm_kubernetes_cluster.existing_cluster[0].kube_config.0.cluster_ca_certificate)}" : base64decode(module.aks_cluster.output.kube_config.0.cluster_ca_certificate)
 }

@@ -1,5 +1,5 @@
 
-English version [[LINK](https://github.com/Gabmetal/gaboform/blob/azure/aks/README.md)]
+English version [[LINK](./README)]
 
   
 
@@ -17,7 +17,7 @@ Antes de ejecutar Terraform tendrá que establecer estas variables de entorno en
 | ARM_SUBSCRIPTION_ID | ID de suscripción de destino | null | String |
 | ARM_TENANT_ID | tenant ID de la suscripción | null | String |
 | TF_VAR_ssh_key | Si ya tiene una clave ssh puede establecerla aquí. Si no proporciona una, terraform creará una nueva y la asignará a los nodos | null | String |
-| TF_VAR_updating_existing_cluster | Si estás actualizando la configuración de un cluster existente, ponlo en true | false | Bool |
+| TF_VAR_UPDATING_EXISTING_CLUSTER | Si estás actualizando la configuración de un cluster existente, ponlo en true | false | Bool |
 | TF_VAR_location | Ubicación en la que desea desplegar los recursos en Azure | eastus2 | String |
 | TF_VAR_rg_name | Nombre del grupo de recursos en el que desea desplegar los recursos del clúster | aks-test-rg | String |
 | TF_VAR_tags |  Etiquetas a aplicar a cada recurso | { environment="develop", application="test" } | Map(string)
